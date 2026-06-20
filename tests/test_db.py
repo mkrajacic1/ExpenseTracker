@@ -1,6 +1,6 @@
-import sqlite3
-
 import pytest
+
+import sqlite3
 
 from expense_tracker.db import get_db
 

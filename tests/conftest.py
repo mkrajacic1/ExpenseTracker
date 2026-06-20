@@ -1,7 +1,7 @@
+import pytest
+
 import os
 import tempfile
-
-import pytest
 
 from expense_tracker import create_app
 from expense_tracker.db import get_db, init_db

@@ -1,7 +1,7 @@
 import re
 from datetime import date
 
-from .db import get_db
+from expense_tracker.db import get_db
 
 
 DATE_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}$")

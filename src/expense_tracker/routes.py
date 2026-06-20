@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, url_for
 
-from .db import get_db
-from . import services
+from expense_tracker.db import get_db
+from expense_tracker import services
 
 
 bp = Blueprint("main", __name__)
@@ -19,6 +19,7 @@ def api_categories():
     return [row["name"] for row in rows]
 
 
+# route supports pagination of 10 transactions per page
 @bp.route("/api/transactions")
 def api_list_transactions():
     page = max(1, request.args.get("page", default=1, type=int))
@@ -65,4 +66,3 @@ def api_summary():
     date_from = request.args.get("from", default="")
     date_to = request.args.get("to", default="")
     return services.get_summary(date_from, date_to)
-

@@ -1,7 +1,7 @@
+from flask import current_app, g
+
 import sqlite3
 from pathlib import Path
-
-from flask import current_app, g
 
 
 SCHEMA_PATH = Path(__file__).parent / "schema.sql"

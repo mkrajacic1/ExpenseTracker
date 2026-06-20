@@ -1,9 +1,9 @@
-import os
-
 from flask import Flask
 
-from . import db
-from .routes import bp
+import os
+
+from expense_tracker import db
+from expense_tracker.routes import bp
 
 
 def create_app(test_config=None):
