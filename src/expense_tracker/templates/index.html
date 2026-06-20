@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block title %}Expense Tracker{% endblock %}
+
+{% block content %}
+<section class="card balance-card">
+    <span class="balance-label">Total Balance</span>
+    <span id="balance" class="balance-value">&euro;0.00</span>
+</section>
+
+<section class="card">
+    <div class="section-header">
+        <h2>Transactions</h2>
+        <button id="add-transaction" type="button" class="btn btn-primary">+ Add Transaction</button>
+    </div>
+
+    <div class="filter-bar">
+        <label>
+            Category
+            <select id="filter-category">
+                <option value="">All categories</option>
+            </select>
+        </label>
+        <label>
+            Period
+            <select id="filter-preset">
+                <option value="all">All time</option>
+                <option value="this-month">This month</option>
+                <option value="last-month">Last month</option>
+                <option value="this-year">This year</option>
+                <option value="custom">Custom range</option>
+            </select>
+        </label>
+        <span id="custom-range" class="custom-range hidden">
+            <label>
+                From
+                <input type="date" id="filter-from">
+            </label>
+            <label>
+                To
+                <input type="date" id="filter-to">
+            </label>
+        </span>
+        <button id="clear-filters" type="button" class="btn btn-secondary">Clear</button>
+    </div>
+
+    <div class="table-wrap">
+        <table class="transactions">
+            <thead>
+                <tr>
+                    <th class="actions-col"></th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th class="amount-col">Amount</th>
+                </tr>
+            </thead>
+            <tbody id="transaction-list"></tbody>
+        </table>
+    </div>
+    <p id="empty-message" class="empty-message hidden">No transactions match the current filters.</p>
+    <div class="pagination">
+        <button id="prev-page" type="button" class="btn btn-secondary">&lsaquo;</button>
+        <span id="page-info"></span>
+        <button id="next-page" type="button" class="btn btn-secondary">&rsaquo;</button>
+    </div>
+</section>
+
+<section class="card">
+    <div class="section-header">
+        <h2>Category Summary</h2>
+        <div class="filters">
+            <label>
+                Period
+                <select id="summary-preset">
+                    <option value="this-month" selected>This month</option>
+                    <option value="last-month">Last month</option>
+                    <option value="this-year">This year</option>
+                    <option value="all">All time</option>
+                    <option value="custom">Custom range</option>
+                </select>
+            </label>
+            <span id="summary-custom-range" class="custom-range hidden">
+                <label>
+                    From
+                    <input type="date" id="summary-from">
+                </label>
+                <label>
+                    To
+                    <input type="date" id="summary-to">
+                </label>
+            </span>
+        </div>
+    </div>
+    <div class="table-wrap">
+        <table class="summary-table">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th class="amount-col">Income</th>
+                    <th class="amount-col">Expenses</th>
+                    <th class="amount-col">Net</th>
+                </tr>
+            </thead>
+            <tbody id="summary-list"></tbody>
+            <tfoot id="summary-total"></tfoot>
+        </table>
+    </div>
+    <p id="summary-empty" class="empty-message hidden">No transactions for this period.</p>
+</section>
+
+<dialog id="transaction-dialog">
+    <form id="transaction-form" method="dialog">
+        <h2 id="dialog-title">Add Transaction</h2>
+
+        <label>Type</label>
+        <div class="type-toggle">
+            <label class="type-option"><input type="radio" name="type" value="income" checked> Income</label>
+            <label class="type-option"><input type="radio" name="type" value="expense"> Expense</label>
+        </div>
+
+        <label for="form-description">Description</label>
+        <input type="text" id="form-description" maxlength="100" required>
+
+        <label for="form-amount">Amount (&euro;)</label>
+        <input type="number" id="form-amount" step="0.01" min="0.01" required>
+
+        <label for="form-category">Category</label>
+        <select id="form-category" required></select>
+
+        <label for="form-date">Date</label>
+        <input type="date" id="form-date" required>
+
+        <p id="form-error" class="form-error hidden"></p>
+
+        <div class="dialog-actions">
+            <button type="button" id="delete-btn" class="btn btn-danger hidden">Delete</button>
+            <button type="button" id="cancel-btn" class="btn btn-secondary">Cancel</button>
+            <button type="submit" id="save-btn" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</dialog>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/utility.js"></script>
+<script src="/static/js/main.js"></script>
+{% endblock %}

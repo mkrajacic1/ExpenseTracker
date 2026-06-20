@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ExpenseTracker"
+version = "1.0.0"
+requires-python = ">= 3.12"
+dependencies = [
+    "flask",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "coverage",
+]
+
+[tool.setuptools]
+packages = ["expense_tracker"]
+package-dir = {"" = "src"}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["expense_tracker"]

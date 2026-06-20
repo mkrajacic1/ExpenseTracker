@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS categories (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS transactions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    description TEXT NOT NULL,
+    amount INTEGER NOT NULL,
+    category TEXT NOT NULL REFERENCES categories(name),
+    date TEXT NOT NULL
+);
