@@ -1,0 +1,19 @@
+
+**/__pycache__/
+*.pyc
+.venv/
+**/*.egg-info/
+tests/
+.pytest_cache/
+.coverage
+htmlcov/
+.git/
+.gitignore
+.gitattributes
+Dockerfile
+compose.yaml
+
+# local
+src/instance/
+instance/
+*.db
