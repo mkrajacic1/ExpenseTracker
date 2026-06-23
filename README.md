@@ -10,7 +10,7 @@ and HTML/CSS/JavaScript on the frontend.
 The app features a REST API for creating, accessing, updating and deleting transactions
 on the user's account, as well as an expense summary by category for a selected period
 
-Backend has 100% test coverage (pytest + coverage).
+Backend has 100% test coverage (`pytest` + `coverage`).
 
 Containerized using **Docker**.
 
@@ -40,7 +40,7 @@ git clone https://github.com/mkrajacic1/ExpenseTracker
 
 #### Run the app container using Docker Compose
 
-Inside the repository, use docker compose to start the container and get the app running.
+Inside the repository run:
 
 ```bash
 cd ExpenseTracker
@@ -48,6 +48,9 @@ docker compose up -d
 ```
 
 Once running, open http://localhost:5000
+
+On first start, the container runs entrypoint.sh, which seeds the database
+with a few example transactions via seed.py, but only if databse was empty.
 
 ## Testing and development
 
