@@ -8,7 +8,7 @@ Expense Tracker is built with **Python**, **Flask** and **SQLite** on the backen
 and HTML/CSS/JavaScript on the frontend.
 
 The app features a REST API for creating, accessing, updating and deleting transactions
-on the user's account, as well as an expense summary by category for a selected period
+on the user's account, as well as an expense summary by category for a selected period.
 
 Backend has 100% test coverage (`pytest` + `coverage`).
 
